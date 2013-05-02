@@ -1,23 +1,9 @@
 """
-
 Minimally improved noise for python. Pragmatic, minimal improved logging for python.
 
 * Provides two separate log levels.
 * One log level for dependencies and one for the application.
 * Improved default format string.
-
-example use:
-  threepio.initialize(...)
-  from threepio import logger
-  # ...
-  logger.debug('debugorz')
-  logger.info('infoz')
-
-example use:
-  woot_logger = threepio.initialize(...,
-                                       ...,
-                                       global_logger=False)
-  woot_logger.debug('W00t!')
 
 """
 
