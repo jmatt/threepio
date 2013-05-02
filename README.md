@@ -52,5 +52,7 @@ In [4]: woot_logger.debug("RWRAharhrhr!")
 ```
 
 ***[Luke, Leia and Han start laughing hysterically; it sounds like screaming]***
+
 **C-3PO**: Listen to them, they're dying R2! Curse my metal body, I wasn't fast enough, it's all my fault! My poor Master.
+
 **Luke**: 3PO, we're all right! We're all right! Ha ha! Hey, open the pressure maintenance hatch on unit number... where are we? 3263827!
