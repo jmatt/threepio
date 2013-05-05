@@ -19,7 +19,7 @@ In [1]: import logging
 
 In [2]: import threepio
 
-In [3]: threepio.initialize(log_filename="./c3po.beep",
+In [3]: threepio.initialize(log_filename="./c3po.beep.log",
                             logger_name="super serial project",
                             app_logging_level=logging.DEBUG,
                             dep_logging_level=logging.WARN)
@@ -27,13 +27,17 @@ Out[3]: <logging.Logger at 0x106bc4ed0>
 
 In [4]: from threepio import logger as c3po
 
-In [5]: c3po.debug("BEEP!")
+In [5]: c3po.info("Artoo says that the chances of survival are 725 to 1.")
+ 
+In [6]: c3po.debug("Actually Artoo has been known to make mistakes...")
 
-In [6]: c3po.info("ManBearPig Exists!")
+In [7]: c3po.warn("from time to time... Oh dear...")
+
 #
-# In c3po.log
-# 2013-05-01 22:29:47,548 super serial project-DEBUG [<ipython-input-5-b81c1c01169e> 1] BEEP!
-# 2013-05-01 22:30:01,372 super serial project-INFO [<ipython-input-6-089fe0b5bf92> 1] ManBearPig Exists!
+# In c3po.beep.log
+# 2013-05-01 22:29:47,548 super serial project-INFO [<ipython-input-5-b81c1c01169e> 1] Artoo says that the chances of survival are 725 to 1. 
+# 2013-05-01 22:30:01,372 super serial project-DEBUG [<ipython-input-6-089fe0b5bf92> 1] Actually Artoo has been known to make mistakes...
+# 2013-05-01 22:30:11,602 super serial project-WARN [<ipython-input-7-092eb0b3ce76> 1] From time to time... Oh dear... 
 ```
 
 Or create a custom logger and leave the global logger alone.
