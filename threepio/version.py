@@ -1,6 +1,5 @@
 """
-Current snowflake version.
-
+Current logger version.
 """
 from subprocess import Popen, PIPE
 from os.path import abspath, dirname
