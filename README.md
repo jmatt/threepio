@@ -7,7 +7,7 @@ Pragmatic, minimal logging for python.
 
 # Install
 ```bash
-pip install git+git://github.com/jmatt/threepio
+pip install -e git://github.com/jmatt/threepio#egg=threepio
 ```
 
 # Use
