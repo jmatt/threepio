@@ -76,6 +76,7 @@ def initialize(logger_name=LOGGER_NAME,
         logger = new_logger
 
     for handler in handlers:
+        handler.setFormatter(format)
+        handler.setLevel(app_logging_level)
         new_logger.addHandler(handler)
-
     return new_logger
