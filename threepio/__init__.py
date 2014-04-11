@@ -33,6 +33,7 @@ def initialize(logger_name=LOGGER_NAME,
                log_filename=LOG_FILENAME,
                app_logging_level=APP_LOGGING_LEVEL,
                dep_logging_level=DEP_LOGGING_LEVEL,
+               handlers=[],
                global_logger=True):
     """
     Constructs and initializes a `logging.Logger` object.
@@ -40,9 +41,10 @@ def initialize(logger_name=LOGGER_NAME,
     Returns :class:`logging.Logger` object.
 
     :param logger_name: name of the new logger.
-    :param log_filename: The log file location :class:`str`.
+    :param log_filename: The log file location :class:`str` or None.
     :param app_logging_level: The logging level to use for the application.
     :param dep_logging_level: The logging level to use for dependencies.
+    :param handlers: List of handler instances to add.
     :param global_logger: If true set threepio's global logger variable to this logger.
     """
     # setup the logging format.
@@ -51,11 +53,16 @@ def initialize(logger_name=LOGGER_NAME,
     logging.Formatter(format)
 
     # Setup the root logging for dependencies, etc.
-    logging.basicConfig(
-        level=dep_logging_level,
-        format=format,
-        filename=log_filename,
-        filemode='a+')
+    if log_filename:
+        logging.basicConfig(
+            level=dep_logging_level,
+            format=format,
+            filename=log_filename,
+            filemode='a+')
+    else:
+        logging.basicConfig(
+            level=dep_logging_level,
+            format=format)
 
     # Setup and add separate application logging.
     new_logger = logging.getLogger(logger_name)
@@ -67,5 +74,8 @@ def initialize(logger_name=LOGGER_NAME,
     if global_logger:
         global logger
         logger = new_logger
+
+    for handler in handlers:
+        new_logger.addHandler(handler)
 
     return new_logger
