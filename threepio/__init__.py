@@ -50,7 +50,7 @@ def initialize(logger_name=LOGGER_NAME,
     # setup the logging format.
     format = "%(asctime)s %(name)s-%(levelname)s "\
              + "[%(pathname)s %(lineno)d] %(message)s"
-    logging.Formatter(format)
+    formatter = logging.Formatter(format)
 
     # Setup the root logging for dependencies, etc.
     if log_filename:
@@ -76,7 +76,7 @@ def initialize(logger_name=LOGGER_NAME,
         logger = new_logger
 
     for handler in handlers:
-        handler.setFormatter(format)
+        handler.setFormatter(formatter)
         handler.setLevel(app_logging_level)
         new_logger.addHandler(handler)
     return new_logger
