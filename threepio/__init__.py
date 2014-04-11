@@ -16,7 +16,7 @@ __title__ = 'threepio'
 __version__ = version.get_version(form='short')
 __author__ = 'J. Matt Peterson'
 __license__ = 'Apache 2.0'
-__copyright__ = 'Copyright 2013 J. Matt Peterson'
+__copyright__ = 'Copyright 2013-2014 J. Matt Peterson'
 
 
 logger = None
