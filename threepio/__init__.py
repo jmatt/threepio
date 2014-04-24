@@ -33,6 +33,7 @@ def initialize(logger_name=LOGGER_NAME,
                log_filename=LOG_FILENAME,
                app_logging_level=APP_LOGGING_LEVEL,
                dep_logging_level=DEP_LOGGING_LEVEL,
+               format=None,
                handlers=[],
                global_logger=True):
     """
@@ -44,12 +45,14 @@ def initialize(logger_name=LOGGER_NAME,
     :param log_filename: The log file location :class:`str` or None.
     :param app_logging_level: The logging level to use for the application.
     :param dep_logging_level: The logging level to use for dependencies.
+    :param format: The format string to use :class: `str` or None.
     :param handlers: List of handler instances to add.
     :param global_logger: If true set threepio's global logger variable to this logger.
     """
-    # setup the logging format.
-    format = "%(asctime)s %(name)s-%(levelname)s "\
-             + "[%(pathname)s %(lineno)d] %(message)s"
+    # If there is no format, use a default format.
+    if not format:
+        format = "%(asctime)s %(name)s-%(levelname)s "\
+                 + "[%(pathname)s %(lineno)d] %(message)s"
     formatter = logging.Formatter(format)
 
     # Setup the root logging for dependencies, etc.
