@@ -1,0 +1,2 @@
+0.1.3   Add support for a list of logging handlers.
+0.1.4   Add logger_class as an optional parameter to initialize.

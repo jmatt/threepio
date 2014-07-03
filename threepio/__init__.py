@@ -34,6 +34,7 @@ def initialize(logger_name=LOGGER_NAME,
                app_logging_level=APP_LOGGING_LEVEL,
                dep_logging_level=DEP_LOGGING_LEVEL,
                format=None,
+               logger_class=None,
                handlers=[],
                global_logger=True):
     """
@@ -46,13 +47,14 @@ def initialize(logger_name=LOGGER_NAME,
     :param app_logging_level: The logging level to use for the application.
     :param dep_logging_level: The logging level to use for dependencies.
     :param format: The format string to use :class: `str` or None.
+    :param logger_class: The logger class to use
     :param handlers: List of handler instances to add.
     :param global_logger: If true set threepio's global logger variable to this logger.
     """
     # If there is no format, use a default format.
     if not format:
         format = "%(asctime)s %(name)s-%(levelname)s "\
-                 + "[%(pathname)s %(lineno)d] %(message)s"
+                 + "[%(pathname)s %(lineno)d] %(job_id)s %(message)s"
     formatter = logging.Formatter(format)
 
     # Setup the root logging for dependencies, etc.
@@ -68,7 +70,13 @@ def initialize(logger_name=LOGGER_NAME,
             format=format)
 
     # Setup and add separate application logging.
-    new_logger = logging.getLogger(logger_name)
+    if logger_class:
+        original_class = logging.getLoggerClass()
+        logging.setLoggerClass(logger_class)
+        new_logger = logging.getLogger(logger_name)
+        logging.setLoggerClass(original_class)
+    else:
+        new_logger = logging.getLogger(logger_name)
 
     # Set the app logging level.
     new_logger.setLevel(app_logging_level)  # required to get level to apply.
