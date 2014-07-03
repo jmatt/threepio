@@ -54,7 +54,7 @@ def initialize(logger_name=LOGGER_NAME,
     # If there is no format, use a default format.
     if not format:
         format = "%(asctime)s %(name)s-%(levelname)s "\
-                 + "[%(pathname)s %(lineno)d] %(job_id)s %(message)s"
+                 + "[%(pathname)s %(lineno)d] %(message)s"
     formatter = logging.Formatter(format)
 
     # Setup the root logging for dependencies, etc.
