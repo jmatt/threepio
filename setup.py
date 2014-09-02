@@ -2,7 +2,8 @@ import os
 import setuptools
 from threepio.version import get_version
 
-readme = open('README.md').read()
+with open("README.md") as f:
+    readme = f.read()
 
 long_description = """
 threepio %s
